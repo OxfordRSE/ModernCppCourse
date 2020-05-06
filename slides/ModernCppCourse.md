@@ -72,7 +72,7 @@ The trend in C++ has been to add features and then recommend a **reduced subset*
 
 ## Is this all a bit overwhelming?
 
-To help navigate the labyrinth of new features and best practices, we have the [C++ core guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines) together with a raft of static analysis tools such as [clang tidy](https://clang.llvm.org/extra/clang-tidy/).
+To help navigate the labyrinth of new features and best practices, we have the [C++ core guidelines (link)](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines) together with a raft of static analysis tools such as [clang tidy (link)](https://clang.llvm.org/extra/clang-tidy/).
 
 But the best way to learn is to play around with new features, and that's what we're going to do today.
 
@@ -114,7 +114,7 @@ Use your favourite text editor (`CLion`, `VSCode` and `Emacs` are all installed 
 ~/RSEConUK2019CppWorkshop/checkpoint_0/main.cpp
 ~~~
 
-## Part 1 — The [filesystem](https://en.cppreference.com/w/cpp/filesystem) library
+## Part 1 — The [filesystem (link)](https://en.cppreference.com/w/cpp/filesystem) library
 
 C++17 added a filesystem library!
 
@@ -124,7 +124,7 @@ C++17 added a filesystem library!
 - It works well across platforms
 - Where possible, we should **always** use it when dealing with files
 
-## Part 1 — The [filesystem](https://en.cppreference.com/w/cpp/filesystem) library
+## Part 1 — The [filesystem (link)](https://en.cppreference.com/w/cpp/filesystem) library
 
 ~~~cpp
 namespace fs = std::filesystem;  // names can be a bit verbose
@@ -316,7 +316,7 @@ const int sum2 = std::accumulate(v.begin(), v.end(), 0);
 ~~~
 
 
-## Using the [algorithms](https://en.cppreference.com/w/cpp/algorithm) library
+## Using the [algorithms (link)](https://en.cppreference.com/w/cpp/algorithm) library
 
 Things about option 2:
 
@@ -327,7 +327,7 @@ Things about option 2:
 - it requires another header...
 
 
-## Using the [algorithms](https://en.cppreference.com/w/cpp/algorithm) library
+## Using the [algorithms (link)](https://en.cppreference.com/w/cpp/algorithm) library
 
 There are algorithms for:
 
@@ -446,7 +446,7 @@ Replace that for loop with a call to `std::transform_reduce`{.cpp}
   - the default binary operation for reducing is `std::plus<>()`{.cpp}
 
 
-## Part 4 - other [algorithms](https://en.cppreference.com/w/cpp/algorithm)
+## Part 4 - other [algorithms (link)](https://en.cppreference.com/w/cpp/algorithm)
 
 There are many algorithms in the standard library!
 
@@ -458,7 +458,7 @@ It is well worth having a good working knowledge of what is available
 - Most make your intent clearer to other humans
 
 
-## Part 4a - a [`<chrono>`](https://en.cppreference.com/w/cpp/chrono) digression
+## Part 4a - a [`<chrono>` (link)](https://en.cppreference.com/w/cpp/chrono) digression
 
 `<chrono>` tracks time, and is one of the real gems of C++11.
 
@@ -499,7 +499,7 @@ Then, spend some time playing around with some other algorithms:
 - Have you ever written your own `std::max_element`?
 
 
-## Part 6 - parallel [`<execution>`](https://en.cppreference.com/w/cpp/header/execution)? Out of the box?!
+## Part 6 - parallel [`<execution>` (link)](https://en.cppreference.com/w/cpp/header/execution)? Out of the box?!
 
 That's right - C++ 17 supports* parallel execution out-of-the-box.
 
@@ -539,14 +539,14 @@ Drawing on the filesystem library and standard algorithms, have a go at rewritin
 
 This was only the tiniest tip of the modern C++ iceberg. There are so many great resources available, and here are just a few of them:
 
-- [The C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
-- [CppReference](https://en.cppreference.com/w/)
-- [Compiler explorer](https://gcc.godbolt.org/)
+- [The C++ Core Guidelines (link)](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
+- [CppReference (link)](https://en.cppreference.com/w/)
+- [Compiler explorer (link)](https://gcc.godbolt.org/)
 - Podcasts and YouTube series
-  - [CppCast](https://cppcast.com/)
-  - [C++ weekly](https://www.youtube.com/user/lefticus1/playlists)
+  - [CppCast (link)](https://cppcast.com/)
+  - [C++ weekly (link)](https://www.youtube.com/user/lefticus1/playlists)
 - Conferences and meetups
-  - [C++ On Sea](https://cpponsea.uk/)
-  - [C++ London](https://www.meetup.com/CppLondon/)
+  - [C++ On Sea (link)](https://cpponsea.uk/)
+  - [C++ London (link)](https://www.meetup.com/CppLondon/)
   
 Thank you for coming!
