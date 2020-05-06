@@ -35,3 +35,6 @@
 build
 Build
 venv
+cmake-build-*
+.idea*
+.vs*
