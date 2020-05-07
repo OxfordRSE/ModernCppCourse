@@ -55,7 +55,7 @@ int main()
     }
     const double var = sum / v.size() - mean * mean;
 
-    // Compute variance
+    // Compute standard deviation
     const double std = std::sqrt(var);
 
     std::cout << "mean:   " << mean << '\n';
@@ -63,7 +63,7 @@ int main()
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// 3. Calculate the skewness - there's no default algorithm for that!
+    /// 3. Calculate the skewness
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Compute skewness

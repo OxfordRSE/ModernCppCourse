@@ -88,17 +88,17 @@ First, let's:
 - Grab the latest version:
 
 ~~~bash
-cd ~/RSEConUK2019CppWorkshop
+cd ~/ModernCppCourse
 git pull
 ~~~
 
 ## Workshop overview
 
-Next, let's configure, build and run the first checkpoint to ensure everything is working for everyone in the room:
+Next, let's configure, build and run the first checkpoint to ensure everything is working for everyone on the course:
 
 ~~~bash
-cd ~/RSEConUK2019CppWorkshop/
-mkdir -p build && cd build
+cd ~/ModernCppCourse/
+mkdir build && cd build
 cmake ..
 make checkpoint_0
 ./checkpoint_0
@@ -111,7 +111,7 @@ Now, let's have a quick look through the code together.
 Use your favourite text editor (`CLion`, `VSCode` and `Emacs` are all installed on the VM), open:
 
 ~~~bash
-~/RSEConUK2019CppWorkshop/checkpoint_0/main.cpp
+~/ModernCppCourse/checkpoint_0/main.cpp
 ~~~
 
 ## Part 1 — The [filesystem (link)](https://en.cppreference.com/w/cpp/filesystem) library
