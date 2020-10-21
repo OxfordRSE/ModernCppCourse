@@ -108,8 +108,6 @@ make checkpoint_0
 
 Now, let's have a quick look through the code together.
 
-Use your favourite text editor (`CLion`, `VSCode` and `Emacs` are all installed on the VM), open:
-
 ~~~bash
 ~/ModernCppCourse/checkpoint_0/main.cpp
 ~~~
