@@ -1,3 +1,7 @@
+![Build & run on Windows](https://github.com/OxfordRSE/ModernCppCourse/workflows/Build%20&%20run%20on%20Windows/badge.svg)
+![Build & run on Ubuntu](https://github.com/OxfordRSE/ModernCppCourse/workflows/Build%20&%20run%20on%20Ubuntu/badge.svg)
+![Build slides](https://github.com/OxfordRSE/ModernCppCourse/workflows/Build%20slides/badge.svg)
+
 # Getting the most out of the modern C++ language and standard libraries
 ## OxRSE 2020
 
