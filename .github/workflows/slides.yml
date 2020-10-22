@@ -1,0 +1,35 @@
+name: "Build slides"
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+
+  build-and-test:
+    name: Build slides
+    runs-on: ubuntu-20.04
+
+    steps:
+
+      - name: checkout repo
+        uses: actions/checkout@v2
+
+      - name: install dependencies
+        run: sudo apt install libtbb-dev pandoc texlive
+
+      - name: make build directory
+        run: mkdir build_dir
+
+      - name: cmake configure
+        run: cmake .. -DSLIDES=ON
+        working-directory: build_dir
+
+      - name: build slides
+        run: |
+          cmake --build . slides
+        working-directory: build_dir
