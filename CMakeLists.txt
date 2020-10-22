@@ -23,7 +23,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 
 ########################################################################################################################
-### Add executable for checkpoints 0, ..., 7, linking TBB if required ##################################################
+### Add executable for checkpoints 0, ..., 7, linking TBB if required, and test fixtures for CI ########################
 ########################################################################################################################
 add_compile_definitions(COURSE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 foreach (NUM RANGE 7)
@@ -31,7 +31,9 @@ foreach (NUM RANGE 7)
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
         target_link_libraries(checkpoint_${NUM} ${TBB})
     endif ()
+    add_test(NAME test_checkpoint_${NUM} COMMAND checkpoint_${NUM})
 endforeach ()
+enable_testing()
 
 
 ########################################################################################################################
