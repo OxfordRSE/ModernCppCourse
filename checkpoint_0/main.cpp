@@ -138,7 +138,7 @@ int main()
 #ifdef _MSC_VER
     system("if not exist output mkdir output");
 #else
-    system("mkdir -p output")
+    system("mkdir -p output");
 #endif
 
     // Create an output file
