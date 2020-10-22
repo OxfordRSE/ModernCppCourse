@@ -29,47 +29,47 @@ jobs:
       - name: build and run checkpoint_0
         run: |
           cmake --build . --parallel 2 --target checkpoint_0
-          .\checkpoint_0.exe
+#          .\checkpoint_0.exe
         working-directory: build_dir
 
       - name: build and run checkpoint_1
         run: |
           cmake --build . --parallel 2 --target checkpoint_1
-          .\checkpoint_1.exe
+#          .\checkpoint_1.exe
         working-directory: build_dir
 
       - name: build and run checkpoint_2
         run: |
           cmake --build . --parallel 2 --target checkpoint_2
-          .\checkpoint_2.exe
+#          .\checkpoint_2.exe
         working-directory: build_dir
 
       - name: build and run checkpoint_3
         run: |
           cmake --build . --parallel 2 --target checkpoint_3
-          .\checkpoint_3.exe
+#          .\checkpoint_3.exe
         working-directory: build_dir
 
       - name: build and run checkpoint_4
         run: |
           cmake --build . --parallel 2 --target checkpoint_4
-          .\checkpoint_4.exe
+#          .\checkpoint_4.exe
         working-directory: build_dir
 
       - name: build and run checkpoint_5
         run: |
           cmake --build . --parallel 2 --target checkpoint_5
-          .\checkpoint_5.exe
+#          .\checkpoint_5.exe
         working-directory: build_dir
 
       - name: build and run checkpoint_6
         run: |
           cmake --build . --parallel 2 --target checkpoint_6
-          .\checkpoint_6.exe
+#          .\checkpoint_6.exe
         working-directory: build_dir
 
       - name: build and run checkpoint_7
         run: |
           cmake --build . --parallel 2 --target checkpoint_7
-          .\checkpoint_7.exe
+#          .\checkpoint_7.exe
         working-directory: build_dir
