@@ -8,6 +8,7 @@
 #include <iostream>
 #include <iterator>
 #include <numeric>
+#include <string>
 #include <vector>
 
 namespace fs = std::filesystem;
@@ -134,13 +135,14 @@ int main()
     /// 7. Writing some data back out to a csv file - pulling several concepts together
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    std::string output_dir = "./output";
-    std::string mkdir_command = "mkdir -p " + output_dir;
-    // System takes a const char* as a parameter
-    system(mkdir_command.c_str());
+#ifdef _MSC_VER
+    system("if not exist output mkdir output");
+#else
+    system("mkdir -p output")
+#endif
 
     // Create an output file
-    std::ofstream output_file(output_dir + "/results.dat");
+    std::ofstream output_file("output/results.dat");
     output_file << v[0];
     for (int i = 1; i < v.size(); i++)
     {

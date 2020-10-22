@@ -8,6 +8,7 @@
 #include <iostream>
 #include <iterator>
 #include <numeric>
+#include <string>
 #include <vector>
 
 namespace fs = std::filesystem;
@@ -18,13 +19,13 @@ int main()
     /// 1. Reading some data in from a file
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Find all files like *_rse_workshop.dat under a specific directory
+    // Find all files like *_rse_workshop.dat under the course directory (COURSE_DIR macro)
     std::vector<fs::path> data_files;
-    for (auto &p : fs::recursive_directory_iterator(std::getenv("HOME")))
+    for (auto &p : fs::recursive_directory_iterator(COURSE_DIR))
     {
         if (p.path().string().ends_with("_rse_workshop.dat"))
         {
-            data_files.emplace_back(p.path());
+            data_files.emplace_back(fs::canonical(p.path()));
         }
     }
 
@@ -90,7 +91,7 @@ int main()
 
     // Any of the elements > 50?
     const bool any_greater_than_50 =
-        std::any_of(std::execution::unseq, v.begin(), v.end(), [](const double x) { return x > 50.0; });
+        std::any_of(std::execution::par_unseq, v.begin(), v.end(), [](const double x) { return x > 50.0; });
     std::cout << std::boolalpha << "Any greater than 50? " << any_greater_than_50 << '\n';
 
     // First position where consecutive elements differ by more than twice the standard deviation

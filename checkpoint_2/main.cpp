@@ -8,6 +8,7 @@
 #include <iostream>
 #include <iterator>
 #include <numeric>
+#include <string>
 #include <vector>
 
 namespace fs = std::filesystem;
@@ -18,13 +19,13 @@ int main()
     /// 1. Reading some data in from a file
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Find all files like *_rse_workshop.dat under a specific directory
+    // Find all files like *_rse_workshop.dat under the course directory (COURSE_DIR macro)
     std::vector<fs::path> data_files;
-    for (auto &p : fs::recursive_directory_iterator(std::getenv("HOME")))
+    for (auto &p : fs::recursive_directory_iterator(COURSE_DIR))
     {
         if (p.path().string().ends_with("_rse_workshop.dat"))
         {
-            data_files.emplace_back(p.path());
+            data_files.emplace_back(fs::canonical(p.path()));
         }
     }
 
@@ -127,13 +128,14 @@ int main()
     /// 7. Writing some data back out to a csv file - pulling several concepts together
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    std::string output_dir = "./output";
-    std::string mkdir_command = "mkdir -p " + output_dir;
-    // System takes a const char* as a parameter
-    system(mkdir_command.c_str());
+#ifdef _MSC_VER
+    system("if not exist output mkdir output");
+#else
+    system("mkdir -p output")
+#endif
 
     // Create an output file
-    std::ofstream output_file(output_dir + "/results.dat");
+    std::ofstream output_file("output/results.dat");
     output_file << v[0];
     for (int i = 1; i < v.size(); i++)
     {

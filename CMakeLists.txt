@@ -1,28 +1,42 @@
 cmake_minimum_required(VERSION 3.16)
 project(ModernCppCourse LANGUAGES CXX)
 
+
+########################################################################################################################
+### Check compiler is either GNU or MSVC, and that version is recent enough ############################################
+########################################################################################################################
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "9.2")
+        message(FATAL_ERROR "Detected GNU compiler version is too old: found v${CMAKE_CXX_COMPILER_VERSION} but 9.2 or newer is required.")
+    endif ()
+    # GCC's standard library requires Intel's TBB for parallel algorithms
+    find_library(TBB NAMES libtbb.so)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    if (MSVC_VERSION VERSION_LESS "1921")
+        message(FATAL_ERROR "Detected MSVC compiler version is too old: found v${MSVC_VERSION} but v1921 or newer (Visual Studio 2019 version 16.1) is required.")
+    endif ()
+else ()
+    message(FATAL_ERROR "Detected ${CMAKE_CXX_COMPILER_ID}, but GNU or MSVC compiler is required.")
+endif ()
+
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(checkpoint_0 checkpoint_0/main.cpp)
-add_executable(checkpoint_1 checkpoint_1/main.cpp)
-add_executable(checkpoint_2 checkpoint_2/main.cpp)
-add_executable(checkpoint_3 checkpoint_3/main.cpp)
-add_executable(checkpoint_4 checkpoint_4/main.cpp)
-add_executable(checkpoint_5 checkpoint_5/main.cpp)
-add_executable(checkpoint_6 checkpoint_6/main.cpp)
-add_executable(checkpoint_7 checkpoint_7/main.cpp)
 
-# Currently need to link in TBB for parallel STL
-find_library(TBB NAMES libtbb.so)
-target_link_libraries(checkpoint_0 ${TBB})
-target_link_libraries(checkpoint_1 ${TBB})
-target_link_libraries(checkpoint_2 ${TBB})
-target_link_libraries(checkpoint_3 ${TBB})
-target_link_libraries(checkpoint_4 ${TBB})
-target_link_libraries(checkpoint_5 ${TBB})
-target_link_libraries(checkpoint_6 ${TBB})
-target_link_libraries(checkpoint_7 ${TBB})
+########################################################################################################################
+### Add executable for checkpoints 0, ..., 7, linking TBB if required ##################################################
+########################################################################################################################
+add_compile_definitions(COURSE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
+foreach (NUM RANGE 7)
+    add_executable(checkpoint_${NUM} checkpoint_${NUM}/main.cpp)
+    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        target_link_libraries(checkpoint_${NUM} ${TBB})
+    endif ()
+endforeach ()
 
+
+########################################################################################################################
+### Optional target to compile the slideshow, which requires Pandoc and LaTeX ##########################################
+########################################################################################################################
 option(SLIDES "Add target for making slides" OFF)
 if (SLIDES)
     find_program(PANDOC pandoc)
@@ -35,7 +49,7 @@ if (SLIDES)
             ${SLIDES_MD} -V theme:metropolis -V aspectratio:169 -o ${SLIDES_PDF}
     )
 
-    find_package (Python3 COMPONENTS Interpreter)
+    find_package(Python3 COMPONENTS Interpreter)
     add_custom_target(
             test_slides COMMAND
             Python3::Interpreter ${SLIDES_DIR}/test_slides.py ${CMAKE_CXX_COMPILER}
