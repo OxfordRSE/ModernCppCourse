@@ -31,5 +31,5 @@ jobs:
 
       - name: build slides
         run: |
-          cmake --build . slides
+          cmake --build . --target slides
         working-directory: build_dir
