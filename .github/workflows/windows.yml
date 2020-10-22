@@ -33,5 +33,5 @@ jobs:
 
       - name: run all checkpoints
         run: |
-          ctest -VV --output-on-failure
+          ctest -C Debug -VV --output-on-failure
         working-directory: build_dir
